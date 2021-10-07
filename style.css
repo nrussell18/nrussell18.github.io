@@ -1,0 +1,178 @@
+
+:root {
+  --background_color: #0b0c10;
+  --box_color: #1f2833;
+  --text_white: #c5c6c7;
+  --bright_accent: #66fcf1;
+  --dull_accent: #45a29e;
+  
+  --main_background: #efe2ba;
+  --main_red: #f13c20;
+  --main_red_text: #f79081;
+  --main_blue: #4056a1;
+  --main_blue_text: #91a2d9;
+}
+
+.resume_body > h1
+{
+  color: var(--dull_accent);
+}
+
+.resume_body > h2
+{
+  color: var(--text_white);
+}
+
+.resume_body
+{
+  background-color: var(--background_color);
+}
+
+.work_experience
+{
+  border: 0px solid black;
+  border-spacing: 5px;
+  padding: 5px;
+}
+
+.work_experience td
+{
+  background-color: var(--box_color);
+  padding: 10px;
+}
+
+
+.work_experience li
+{
+  color: var(--text_white);
+}
+
+.work_experience h4, .work_experience h5, .work_experience h6
+{
+  color: var(--bright_accent);
+}
+
+
+
+.education
+{
+  border: 0px solid black;
+  border-spacing: 5px;
+  padding: 5px;
+}
+
+.education td
+{
+  background-color: var(--box_color);
+  padding: 10px;
+}
+
+
+.education li
+{
+  color: var(--text_white);
+}
+
+.education h4, .education h5, .education h6
+{
+  color: var(--bright_accent);
+}
+
+
+
+
+
+
+.main_body
+{
+  background-color: var(--main_background);
+}
+
+
+.page_links
+{
+  border: 0px solid black;
+  border-spacing: 10px;
+  padding: 5px;
+}
+
+.resume_link td
+{
+  background-color: var(--main_blue);
+  color: var(--main_blue_text);
+  padding: 10px;
+}
+
+.resume_link a
+{
+  color: var(--main_blue_text);
+}
+
+
+.interest_link td
+{
+  background-color: var(--main_red);
+  color: var(--main_red_text);
+  padding: 10px;
+}
+
+.interest_link a
+{
+  color: var(--main_red_text);
+}
+
+
+
+
+
+.interest_body
+{
+  background-color: var(--background_color);
+  color: var(--text_white);
+}
+
+.interest_table
+{
+  border: 0px solid black;
+  border-spacing: 10px;
+  padding: 10px;
+}
+
+.interest_table td, .interest_table th
+{
+  background-color: var(--box_color);
+  padding: 10px;
+  color: var(--text_white);
+}
+
+.interest_table h4
+{
+  color: var(--bright_accent);
+}
+
+.interest_table a
+{
+  color: var(--dull_accent);
+}
+
+
+
+td.sport
+{
+  background-color: #2a3e57;
+}
+
+td.esport
+{
+  background-color: #2a5157;
+}
+
+td.board_game
+{
+  background-color: #2b2a57;
+}
+
+
+
+
+
