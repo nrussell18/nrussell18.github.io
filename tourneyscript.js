@@ -119,7 +119,8 @@ class Tourney
             for(let subround = 0; subround < temp_participants.length - 1; subround++)
             {
                 // start new subround in stringbuilder
-                string_builder += "<h3>Round #" + (subround + 1 + round * (temp_participants.length - 1)) + "</h3><table>";
+                string_builder += "<h3>Round #" + (subround + 1 + round * (temp_participants.length - 1)) + "</h3><table>" + 
+                "<tr><th class=\"white\"></th><th></th><th class=\"black\"></tr>";
 
                 for (let match = 0; match < temp_participants.length / 2; match++)
                 {
