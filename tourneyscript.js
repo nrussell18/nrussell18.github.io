@@ -2,8 +2,11 @@
 const INT_MAX = 2147000000;
 const BYE = "##$!BYE##$!";
 
-const WIN_COLOR = "#FFFF00";
-const LOSS_COLOR = "white";
+const WIN_COLOR = "#EFB34C";
+const LOSS_COLOR = "#194A40";
+
+const WIN_TEXT = "#70490A";
+const LOSS_TEXT = "white";
 
 const SELECT_CLASS = "selected";
 const UNSELECTED_CLASS = "unselected";
@@ -14,25 +17,7 @@ var main_tourney = null;
 
 
 
-//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-function shuffle(array)
-{
-    let currentIndex = array.length,  randomIndex;
-  
-    // While there remain elements to shuffle...
-    while (currentIndex != 0) {
-  
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    }
-  
-    return array;
-}
+
 
 // Moves tape for round robin scheduling algorithm
 function array_leave_one_out_vtape(array)
@@ -125,8 +110,6 @@ class Tourney
         {
             temp_participants.push(BYE);
         }
-        // shuffle order for random generation
-        temp_participants = shuffle(temp_participants);
         
         let string_builder = "";
 
@@ -245,6 +228,7 @@ function clicked_participant(element)
         if (element.className == SELECT_CLASS)
         {
             element.style.backgroundColor = LOSS_COLOR;
+            element.style.color = LOSS_TEXT;
             element.className = UNSELECTED_CLASS;
             main_tourney.sub_win(element.innerHTML);
             main_tourney.sub_loss(table_row.children[2].innerHTML);
@@ -252,11 +236,14 @@ function clicked_participant(element)
         else
         {
             element.style.backgroundColor = WIN_COLOR;
+            element.style.color = WIN_TEXT;
             element.className = SELECT_CLASS;
             main_tourney.add_win(element.innerHTML);
             main_tourney.add_loss(table_row.children[2].innerHTML);
             table_row.children[1].style.backgroundColor = LOSS_COLOR;
             table_row.children[2].style.backgroundColor = LOSS_COLOR;
+            table_row.children[1].style.color = LOSS_TEXT;
+            table_row.children[2].style.color = LOSS_TEXT;
             if (table_row.children[1].className == SELECT_CLASS)
             {
                 main_tourney.sub_draw(element.innerHTML);
@@ -278,6 +265,7 @@ function clicked_participant(element)
         if (element.className == SELECT_CLASS)
         {
             element.style.backgroundColor = LOSS_COLOR;
+            element.style.color = LOSS_TEXT;
             element.className = UNSELECTED_CLASS;
             main_tourney.sub_win(element.innerHTML);
             main_tourney.sub_loss(table_row.children[0].innerHTML);
@@ -285,11 +273,14 @@ function clicked_participant(element)
         else
         {
             element.style.backgroundColor = WIN_COLOR;
+            element.style.color = WIN_TEXT;
             element.className = SELECT_CLASS;
             main_tourney.add_win(element.innerHTML);
             main_tourney.add_loss(table_row.children[0].innerHTML);
             table_row.children[0].style.backgroundColor = LOSS_COLOR;
             table_row.children[1].style.backgroundColor = LOSS_COLOR;
+            table_row.children[0].style.color = LOSS_TEXT;
+            table_row.children[1].style.color = LOSS_TEXT;
             if (table_row.children[1].className == SELECT_CLASS)
             {
                 main_tourney.sub_draw(element.innerHTML);
@@ -311,6 +302,7 @@ function clicked_participant(element)
         if (element.className == SELECT_CLASS)
         {
             element.style.backgroundColor = LOSS_COLOR;
+            element.style.color = LOSS_TEXT;
             element.className = UNSELECTED_CLASS;
             main_tourney.sub_draw(table_row.children[0].innerHTML);
             main_tourney.sub_draw(table_row.children[2].innerHTML);
@@ -318,11 +310,14 @@ function clicked_participant(element)
         else
         {
             element.style.backgroundColor = WIN_COLOR;
+            element.style.color = WIN_TEXT;
             element.className = SELECT_CLASS;
             main_tourney.add_draw(table_row.children[0].innerHTML);
             main_tourney.add_draw(table_row.children[2].innerHTML);
             table_row.children[0].style.backgroundColor = LOSS_COLOR;
             table_row.children[2].style.backgroundColor = LOSS_COLOR;
+            table_row.children[0].style.color = LOSS_TEXT;
+            table_row.children[2].style.color = LOSS_TEXT;
             if (table_row.children[0].className == SELECT_CLASS)
             {
                 main_tourney.sub_win(table_row.children[0].innerHTML);

@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>nrussell18 tournament tool</title>
+	<link rel="stylesheet" href="tourney_style.css">
 	<script src="tourneyscript.js" defer></script>
 </head>
 
@@ -10,13 +11,13 @@
 
 <body>
 
-	<textarea name="input_box" id="input_box" cols="40" rows="5"></textarea><br>
+	<textarea name="input_box" id="input_box" cols="50" rows="10"></textarea><br>
 	<label for="num_rounds">Number of rounds:</label>
 
 	<input type="number" id="num_rounds" name="num_rounds"
        min="1">
 
-	<button onclick="generate()">GENERATE</button>
+	<button id="generate_button" onclick="generate()">GENERATE</button>
 
 
 	<table id="standings">
