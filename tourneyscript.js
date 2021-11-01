@@ -9,6 +9,10 @@ const SELECT_CLASS = "selected";
 const UNSELECTED_CLASS = "unselected";
 
 
+// Main tourney for page
+var main_tourney = null;
+
+
 
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array)
@@ -30,7 +34,7 @@ function shuffle(array)
     return array;
 }
 
-
+// Moves tape for round robin scheduling algorithm
 function array_leave_one_out_vtape(array)
 {
     let last = array[array.length - 1];
@@ -49,12 +53,12 @@ function array_leave_one_out_vtape(array)
 
 class Tourney 
 {
-    constructor(participants)
+    constructor(participants, rounds)
     {
         this.participants = participants;
         this.wins = new Map();
         this.losses = new Map();
-        this.rounds = 2;
+        this.rounds = rounds;
 
         for (let i = 0; i < this.participants.length; i++)
         {
@@ -126,6 +130,7 @@ class Tourney
         
         let string_builder = "";
 
+
         for (let round = 0; round < this.rounds; round++)
         {
             for(let subround = 0; subround < temp_participants.length - 1; subround++)
@@ -138,6 +143,14 @@ class Tourney
                     // get 2 participants
                     let first = temp_participants[match];
                     let second = temp_participants[(temp_participants.length - 1) - match];
+                    
+                    // swap on odd rounds to get alternating ordering
+                    if (round % 2 == 1)
+                    {
+                        let third = first;
+                        first = second;
+                        second = third;
+                    }
                     
                     // If neither is the bye, then it is real match
                     if (first != BYE && second != BYE)
@@ -153,10 +166,10 @@ class Tourney
                 temp_participants = array_leave_one_out_vtape(temp_participants);
             }
 
-            // reverse order of list (makes it so mirrored across sides in second round)
-            temp_participants = temp_participants.reverse();
+
         }
 
+        // finally update the innerHTML
         matches_div.innerHTML = string_builder;
     }
 
@@ -201,16 +214,13 @@ class Tourney
 
 
 
-// main tourney for page
-var main_tourney = null;
 
-
-
-
+// Function that sets everything up, called when generate button is hit
 function generate()
 {
     let input_text = document.getElementById("input_box").value.split("\n");
-    main_tourney = new Tourney(input_text);
+    let num_rounds = Math.floor(document.getElementById("num_rounds").value);
+    main_tourney = new Tourney(input_text, num_rounds);
 
     main_tourney.set_standings();
     main_tourney.set_matches();
