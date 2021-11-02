@@ -81,11 +81,29 @@ class Tourney
             temp_participants.splice(best, 1);
         }
 
+
+        let placements = [];
+        for (let i = 0; i < sorted_participants.length; i++)
+        {
+            placements[i] = 0;
+        }
+        placements[0] = 1;
     
         for (let i = 0; i < sorted_participants.length; i++)
         {
             build_string += "<tr>";
-            build_string += "<td>" + (i + 1) + "</td>";
+            if (i > 0 && 
+                this.wins.get(sorted_participants[i]) == this.wins.get(sorted_participants[i - 1])
+                && this.losses.get(sorted_participants[i]) == this.losses.get(sorted_participants[i - 1]))
+            {
+                placements[i] = placements[i - 1];
+            }
+            else
+            {
+                placements[i] = (i + 1);
+            }
+
+            build_string += "<td>" + placements[i] + "</td>";
             build_string += "<td>" + sorted_participants[i] + "</td>";
             build_string += "<td>" + this.wins.get(sorted_participants[i]) + "</td>";
             build_string += "<td>" + this.losses.get(sorted_participants[i]) + "</td>";
@@ -203,6 +221,18 @@ class Tourney
 function generate()
 {
     let input_text = document.getElementById("input_box").value.split("\n");
+    let index = 0;
+
+    while (index < input_text.length)
+    {
+        if (input_text[index].length < 1)
+        {
+            input_text.splice(index, 1);
+            index--;
+        }
+        index++;
+    }
+
     let num_rounds = Math.floor(document.getElementById("num_rounds").value);
     main_tourney = new Tourney(input_text, num_rounds);
 

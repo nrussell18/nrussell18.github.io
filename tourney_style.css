@@ -1,10 +1,16 @@
-
+@import url('http://fonts.cdnfonts.com/css/porter');
 
 body
 {
     background-color: #123731;
+    font-family: 'Porter', sans-serif;
 }
 
+
+h3
+{
+    color: #9CCA91;
+}
 
 textarea
 {
@@ -25,12 +31,16 @@ label
     color: white;
     border: none;
     outline: none;
+    padding: 5px;
 }
 
 #generate_button
 {
     background-color: #4D7850;
     color: white;
+    border: none;
+    outline: none;
+    padding: 5px;
 }
 
 
@@ -70,14 +80,14 @@ label
 #matches_div td
 {
     background-color: #194A40;
-    padding: 10px;
+    padding: 10px 16px;
     color: white;
 }
 
 #matches_div th
 {
     background-color: #194A40;
-    padding: 10px;
+    padding: 10px 16px;
     color: white;
 }
 
@@ -85,21 +95,21 @@ label
 #matches_div td:hover
 {
     background-color: #4D7850;
-    padding: 10px;
+    padding: 10px 16px;
     color: white;
 }
 
 .selected:hover
 {
     background-color: #EFB34C !important;
-    padding: 10px;
+    padding: 10px 16px;
     color: #70490A !important;
 }
 
 .unselected:hover
 {
     background-color: #4D7850 !important;
-    padding: 10px;
+    padding: 10px 16px;
     color: white !important;
 }
 
@@ -107,12 +117,12 @@ label
 .white
 {
     background-color: white !important;
-    padding: 10px;
+    padding: 10px 16px;
 }
 
 .black
 {
     background-color: black !important;
-    padding: 10px;
+    padding: 10px 16px;
 }
 
