@@ -17,6 +17,20 @@ const WAIT_AFTER_GAME = 5000;
 
 
 
+// ============================================
+// SLEEP FUNCTION
+// ============================================
+function sleep(milliseconds)
+{
+    const date = Date.now();
+    let currentDate = null;
+    do 
+    {
+        currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+}
+
+
 
 // ============================================
 // PSEUDORANDOM NUMBER GENERATOR
@@ -110,21 +124,21 @@ class Team
     }
 
     // add 1 win
-    add_win()
+    add_win = function()
     {
         this.wins++;
     }
 
     // add 1 point
-    add_point()
+    add_point = function()
     {
         this.points++;
     }
 
     // get value that this team will be sorted by in standings
-    get_sort_value()
+    get_sort_value = function()
     {
-        return (this.wins * ROUNDS_IN_MATCH) + this.points;
+        return (this.wins * 2 * ROUNDS_IN_MATCH) + this.points;
     }
 
 
@@ -153,6 +167,47 @@ class Match
         this.score1 = 0;
         this.score2 = 0;
     }
+
+
+    play_match = function()
+    {
+        // get scoreboard part of page
+
+        // sleep certain amount of time before game
+        sleep(WAIT_BEFORE_GAME);
+
+
+
+        for (let round = 0; round < ROUNDS_IN_MATCH; round++)
+        {
+            // get stats from each team
+            let stat1 = this.team1.get_stat();
+            let stat2 = this.team2.get_stat();
+
+            // figure out round winner
+            let value = rand() * (stat1 + stat2);
+
+            if (value < stat1)
+            {
+                this.score1 += 1;
+                this.team1.add_point();
+
+                // update scoreboard
+            }
+            else
+            {
+                this.score2 += 1;
+                this.team2.add_point();
+
+                // update scoreboard
+            }
+
+            // wait certain amount of time between rounds
+            sleep(WAIT_BETWEEN_ROUNDS);
+        }
+    }
+
+
 }
 
 
