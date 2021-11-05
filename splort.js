@@ -11,9 +11,9 @@ const NUMBER_OF_STATS = 5;
 const ROUNDS_IN_MATCH = 15;
 
 
-const WAIT_BEFORE_GAME = 5000;
+const WAIT_BEFORE_GAME = 4000;
 const WAIT_BETWEEN_ROUNDS = 1000;
-const WAIT_AFTER_GAME = 5000;
+const WAIT_AFTER_GAME = 4000;
 
 
 
@@ -28,6 +28,24 @@ function sleep(milliseconds)
     {
         currentDate = Date.now();
     } while (currentDate - date < milliseconds);
+}
+
+
+
+// ============================================
+// VTAPE FUNCTION
+// ============================================
+// Moves tape for round robin scheduling algorithm
+function array_leave_one_out_vtape(array)
+{
+    let last = array[array.length - 1];
+    for (let i = array.length - 1; i > 1; i--)
+    {
+        array[i] = array[i - 1];
+    }
+    array[1] = last;
+
+    return array;
 }
 
 
@@ -129,6 +147,12 @@ class Team
         this.wins++;
     }
 
+    // add 1 loss
+    add_loss = function()
+    {
+        this.losses++;
+    }
+
     // add 1 point
     add_point = function()
     {
@@ -138,17 +162,39 @@ class Team
     // get value that this team will be sorted by in standings
     get_sort_value = function()
     {
-        return (this.wins * 2 * ROUNDS_IN_MATCH) + this.points;
+        return ((1000 * ROUNDS_IN_MATCH * this.wins) - (10 * ROUNDS_IN_MATCH * this.losses)) + this.points;
     }
 
 
     // innerHTML for standings (table row)
+    set_standings_row = function(team_table)
+    {
+        return "<tr id=\"" + this.name + "_standings\"><td><img src=\"" + this.icon + 
+        "\" alt=\"icon\" width=\"20\" height=\"20\"></td><td>" + this.name + 
+        "</td><td>" + this.wins + "</td><td>" + this.losses + "</td><td>" + this.points + "</td></tr>";
+    }
 
-
-    // innerHTML for schedule match (table elements)
+    // style the row pertaining to this team in the standings
+    style_standings_row = function()
+    {
+        let row = document.getElementById(this.name + "_standings");
+        row.style.backgroundColor = this.primary_color;
+        row.style.color = this.secondary_color;
+    }
 
 
     // innerHTML for live (div)
+    set_live_HTML = function(team_div)
+    {
+        team_div.style.backgroundColor = this.primary_color;
+        team_div.style.color = this.secondary_color;
+        let string_builder = "";
+
+        string_builder += "<img src=\"" + this.icon + "\" alt=\"icon\" width=\"300\" height=\"300\"><br>";
+        string_builder += "<h4>" + this.name + "</h4>";
+        string_builder += "<h2 id=\"" + this.name + "_scoreboard\">0</h2>";
+        team_div.innerHTML = string_builder;
+    }
 }
 
 
@@ -171,7 +217,16 @@ class Match
 
     play_match = function()
     {
-        // get scoreboard part of page
+        // setup live part of page
+        let team1_div = document.getElementById("live_left");
+        let team2_div = document.getElementById("live_right");
+
+        this.team1.set_live_HTML(team1_div);
+        this.team2.set_live_HTML(team2_div);
+
+        let team1_scoreboard = document.getElementById(this.team1.name + "_scoreboard");
+        let team2_scoreboard = document.getElementById(this.team2.name + "_scoreboard");
+
 
         // sleep certain amount of time before game
         sleep(WAIT_BEFORE_GAME);
@@ -193,6 +248,7 @@ class Match
                 this.team1.add_point();
 
                 // update scoreboard
+                team1_scoreboard.innerHTML = this.score1;
             }
             else
             {
@@ -200,11 +256,41 @@ class Match
                 this.team2.add_point();
 
                 // update scoreboard
+                team2_scoreboard.innerHTML = this.score2;
             }
 
             // wait certain amount of time between rounds
             sleep(WAIT_BETWEEN_ROUNDS);
         }
+
+
+
+        if (this.stat1 > this.stat2)
+        {
+            this.team1.add_win();
+            this.team2.add_loss();
+        }
+        else
+        {
+            this.team2.add_win();
+            this.team1.add_loss();
+        }
+
+        // wait a certain amount of time after game has finished
+        sleep(WAIT_AFTER_GAME);
+    }
+
+
+
+    // get row for schedule
+    return_schedule_row = function()
+    {
+        return "<tr><td style=\"background-color: " + 
+        this.team1.primary_color + "; color: " + this.team1.secondary_color + ";\">" + 
+        this.team1.name + "</td><td>" + this.score1 + "</td><td>" + this.score2 + 
+        "</td><td style=\"background-color: " + 
+        this.team2.primary_color + "; color: " + this.team2.secondary_color + ";\">" + 
+        this.team2.name + "</td></tr>";
     }
 
 
@@ -216,7 +302,58 @@ class Match
 // ============================================
 // SCHEDULE CLASS
 // ============================================
+class Schedule
+{
+    constructor(teams)
+    {
+        this.teams = teams;
+        this.matches = [];
 
+
+        for (let round = 0; round < this.teams.length; round++)
+        {
+            for (let match = 0; match < this.teams.length / 2; match++)
+            {
+                // get 2 participants
+                let first = this.teams[match];
+                let second = this.teams[(this.teams.length - 1) - match];
+
+                this.matches.push(new Match(first, second));
+            }
+
+            array_leave_one_out_vtape(this.teams);
+        }
+
+        //this.display_schedule();
+    }
+
+
+
+    display_schedule = function()
+    {
+        let table = document.getElementById("schedule");
+
+        let string_builder = "";
+
+        for(let i = 0; i < this.matches.length; i++)
+        {
+            string_builder += this.matches[i].return_schedule_row();
+        }
+
+        table.innerHTML = string_builder;
+    }
+
+
+
+    play_schedule = function()
+    {
+        for (let match = 0; match < this.matches.length; match++)
+        {
+            this.matches[match].play_match();
+            //this.display_schedule();
+        }
+    }
+}
 
 
 
@@ -237,10 +374,35 @@ class Match
 
 
 
+
+
+
+
 // ============================================
 // DEFINE TEAMS
 // ============================================
 
+
+var ALL_TEAMS = [];
+ALL_TEAMS.push(new Team("BIG GALACTICA", "#0C2340", "#DDCBA4", "icons/big_galactica.png"));
+ALL_TEAMS.push(new Team("BUTTERFLY PALACE", "#FF5733", "#111111", "icons/butterfly_palace.png"));
+ALL_TEAMS.push(new Team("CROWNE EMPIRIUM", "#FFF000", "#211C1E", "icons/crowne_empirium.png"));
+ALL_TEAMS.push(new Team("GRAYWINTER", "#444444", "#999999", "icons/graywinter.png"));
+ALL_TEAMS.push(new Team("JACKALOPES", "#390F10", "#22CBD6", "icons/jackalopes.png"));
+ALL_TEAMS.push(new Team("KING COBRA", "#3CA243", "#E5D661", "icons/king_cobra.png"));
+ALL_TEAMS.push(new Team("NOT BROCCOLI", "#14A958", "#1C1A1B", "icons/not_broccoli.png"));
+ALL_TEAMS.push(new Team("POGGERS UNITED", "#141414", "#AA8A00", "icons/poggers_united.png"));
+ALL_TEAMS.push(new Team("POLAR MOOSEGANG", "#A9E0EB", "#383F7A", "icons/polar_moosegang.png"));
+ALL_TEAMS.push(new Team("POTATO", "#1C0A00", "#C48448", "icons/potato.png"));
+ALL_TEAMS.push(new Team("QUASIBROCCOLI UNITED", "#1C1A1B", "#1ED760", "icons/quasibroccoli_united.png"));
+ALL_TEAMS.push(new Team("STICKBUG INCORPORATED", "#123731", "#EFB34C", "icons/stickbug_incorporated.png"));
+ALL_TEAMS.push(new Team("THE PENGUIN ITSELF", "#230445", "#9871FF", "icons/the_penguin_itsef.png"));
+ALL_TEAMS.push(new Team("TRITONS", "#2B58E9", "#F22431", "icons/tritons.png"));
+ALL_TEAMS.push(new Team("WUMPUS UPRISING", "#7289D9", "#FFFFFF", "icons/wumpus_uprising.png"));
+ALL_TEAMS.push(new Team("YAKS ETERNAL", "#F6412D", "#FFFFFF", "icons/yaks_eternal.png"));
+
+var big_schedule = new Schedule(ALL_TEAMS);
+big_schedule.play_schedule();
 
 
 
