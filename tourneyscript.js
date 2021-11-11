@@ -153,6 +153,14 @@ class Tourney
                         first = second;
                         second = third;
                     }
+
+                    // swap first match on even subrounds
+                    if (match == 0 && subround % 2 == 0)
+                    {
+                        let third = first;
+                        first = second;
+                        second = third;
+                    }
                     
                     // If neither is the bye, then it is real match
                     if (first != BYE && second != BYE)
