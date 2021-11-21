@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Esports ELO</title>
+	<link rel="stylesheet" href="esports_elo.css">
+	<script src="esports_elo.js" defer></script>
+</head>
+
+
+
+<body>
+
+
+
+	<div id="rank_icon">
+
+	</div>
+
+
+
+
+	<table id="results">
+
+	</table>
+
+
+
+
+
+	<table id="all_inputs_table">
+
+		<tr>
+			<th>GAME</th>
+			<th>INPUT</th>
+			<th>ADDITIONAL</th>
+			<th>DESCRIPTION</th>
+			<th>TIER</th>
+		</tr>
+
+		<tr>
+			<td><h4>League of Legends Soloduo</h4></td>
+			<td>
+				<select name="lol_soloduo_rank" id="lol_soloduo_rank">
+					<option value="0" selected>UNRANKED</option>
+					<option value="40">IRON IV</option>
+					<option value="55">IRON III</option>
+					<option value="70">IRON II</option>
+					<option value="85">IRON I</option>
+					<option value="100">BRONZE IV</option>
+					<option value="115">BRONZE III</option>
+					<option value="130">BRONZE II</option>
+					<option value="145">BRONZE I</option>
+					<option value="160">SILVER IV</option>
+					<option value="175">SILVER III</option>
+					<option value="190">SILVER II</option>
+					<option value="205">SILVER I</option>
+					<option value="220">GOLD IV</option>
+					<option value="235">GOLD III</option>
+					<option value="250">GOLD II</option>
+					<option value="265">GOLD I</option>
+					<option value="280">PLATINUM IV</option>
+					<option value="295">PLATINUM III</option>
+					<option value="310">PLATINUM II</option>
+					<option value="325">PLATINUM I</option>
+					<option value="340">DIAMOND IV</option>
+					<option value="355">DIAMOND III</option>
+					<option value="370">DIAMOND II</option>
+					<option value="385">DIAMOND I</option>
+					<option value="420">MASTER</option>
+					<option value="450">GRANDMASTER</option>
+					<option value="500">CHALLENGER</option>
+				</select>
+			</td>
+			<td>
+				<label for="lol_soloduo_lp">ENTER LP:</label>
+				<input name="lol_soloduo_lp" id="lol_soloduo_lp" type="number" min="0" max="100" value="0">
+			</td>
+			<td>Max rank and LP combination for soloduo</td>
+			<td class="s_tier">S</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>League of Legends Ranked Flex</h4></td>
+			<td>
+				<select name="lol_flex_rank" id="lol_flex_rank">
+					<option value="0" selected>UNRANKED</option>
+					<option value="40">IRON IV</option>
+					<option value="55">IRON III</option>
+					<option value="70">IRON II</option>
+					<option value="85">IRON I</option>
+					<option value="100">BRONZE IV</option>
+					<option value="115">BRONZE III</option>
+					<option value="130">BRONZE II</option>
+					<option value="145">BRONZE I</option>
+					<option value="160">SILVER IV</option>
+					<option value="175">SILVER III</option>
+					<option value="190">SILVER II</option>
+					<option value="205">SILVER I</option>
+					<option value="220">GOLD IV</option>
+					<option value="235">GOLD III</option>
+					<option value="250">GOLD II</option>
+					<option value="265">GOLD I</option>
+					<option value="280">PLATINUM IV</option>
+					<option value="295">PLATINUM III</option>
+					<option value="310">PLATINUM II</option>
+					<option value="325">PLATINUM I</option>
+					<option value="340">DIAMOND IV</option>
+					<option value="355">DIAMOND III</option>
+					<option value="370">DIAMOND II</option>
+					<option value="385">DIAMOND I</option>
+					<option value="420">MASTER</option>
+					<option value="450">GRANDMASTER</option>
+					<option value="500">CHALLENGER</option>
+				</select>
+			</td>
+			<td>
+				<label for="lol_flex_lp">ENTER LP:</label>
+				<input name="lol_flex_lp" id="lol_flex_lp" type="number" min="0" max="100" value="0">
+			</td>
+			<td>Max rank and LP combination for ranked flex</td>
+			<td class="d_tier">D</td>
+		</tr>
+
+
+
+
+		<tr>
+			<td><h4>Overwatch Primary Role</h4></td>
+			<td>
+				<label for="ow_primary_rank">ENTER SR:</label>
+				<input type="number" name="ow_primary_rank" id="ow_primary_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+
+			<td>Max SR for best role</td>
+			<td class="s_tier">S</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>Overwatch Secondary Role</h4></td>
+			<td>
+				<label for="ow_secondary_rank">ENTER SR:</label>
+				<input type="number" name="ow_secondary_rank" id="ow_secondary_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max SR for secondary role</td>
+			<td class="d_tier">D</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>Valorant</h4></td>
+			<td>
+				<select name="valorant_rank" id="valorant_rank">
+					<option value="0" selected>UNRANKED</option>
+					<option value="40">IRON I</option>
+					<option value="60">IRON II</option>
+					<option value="80">IRON III</option>
+					<option value="100">BRONZE I</option>
+					<option value="120">BRONZE II</option>
+					<option value="140">BRONZE III</option>
+					<option value="160">SILVER I</option>
+					<option value="180">SILVER II</option>
+					<option value="200">SILVER III</option>
+					<option value="220">GOLD I</option>
+					<option value="240">GOLD II</option>
+					<option value="260">GOLD III</option>
+					<option value="280">PLATINUM I</option>
+					<option value="300">PLATINUM II</option>
+					<option value="320">PLATINUM III</option>
+					<option value="340">DIAMOND I</option>
+					<option value="360">DIAMOND II</option>
+					<option value="380">DIAMOND III</option>
+					<option value="400">IMMORTAL I</option>
+					<option value="420">IMMORTAL II</option>
+					<option value="440">IMMORTAL III</option>
+					<option value="460">RADIANT</option>
+				</select>
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max rank</td>
+			<td class="s_tier">S</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>CSGO</h4></td>
+			<td>
+				<select name="csgo_rank" id="csgo_rank">
+					<option value="0" selected>UNRANKED</option>
+					<option value="30">SILVER I</option>
+					<option value="60">SILVER II</option>
+					<option value="90">SILVER III</option>
+					<option value="120">SILVER IV</option>
+					<option value="150">SILVER ELITE</option>
+					<option value="180">SILVER ELITE MASTER</option>
+					<option value="210">GOLD NOVA I</option>
+					<option value="240">GOLD NOVA II</option>
+					<option value="270">GOLD NOVA III</option>
+					<option value="300">GOLD NOVA MASTER</option>
+					<option value="330">MASTER GUARDIAN I</option>
+					<option value="360">MASTER GUARDIAN II</option>
+					<option value="390">MASTER GUARDIAN ELITE</option>
+					<option value="420">DISTINGUISHED MASTER GUARDIAN</option>
+					<option value="450">LEGENDARY EAGLE</option>
+					<option value="480">LEGENDARY EAGLE MASTER</option>
+					<option value="510">SUPREME MASTER</option>
+					<option value="540">GLOBAL ELITE</option>
+				</select>
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max rank</td>
+			<td class="s_tier">S</td>
+		</tr>
+
+
+
+
+
+		<tr>
+			<td><h4>DOTA 2</h4></td>
+			<td>
+				<label for="dota_rank">ENTER ELO:</label>
+				<input type="number" name="dota_rank" id="dota_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max ELO</td>
+			<td class="s_tier">S</td>
+		</tr>
+
+
+
+
+		<tr>
+			<td><h4>Rocket League Primary Gamemode</h4></td>
+			<td>
+				<select name="rl_primary_rank" id="rl_primary_rank">
+					<option value="0" selected>UNRANKED</option>
+					<option value="40">BRONZE I</option>
+					<option value="60">BRONZE II</option>
+					<option value="80">BRONZE III</option>
+					<option value="100">SILVER I</option>
+					<option value="120">SILVER II</option>
+					<option value="140">SILVER III</option>
+					<option value="160">GOLD I</option>
+					<option value="180">GOLD II</option>
+					<option value="200">GOLD III</option>
+					<option value="220">PLATINUM I</option>
+					<option value="240">PLATINUM II</option>
+					<option value="260">PLATINUM III</option>
+					<option value="280">DIAMOND I</option>
+					<option value="300">DIAMOND II</option>
+					<option value="320">DIAMOND III</option>
+					<option value="340">CHAMPION I</option>
+					<option value="360">CHAMPION II</option>
+					<option value="380">CHAMPION III</option>
+					<option value="400">GRAND CHAMPION I</option>
+					<option value="420">GRAND CHAMPION II</option>
+					<option value="440">GRAND CHAMPION III</option>
+					<option value="460">SUPERSONIC LEGEND</option>
+				</select>
+			</td>
+			
+			<td>
+				<select name="rl_primary_division" id="rl_primary_division">
+					<option value="0" selected>DIVISION I</option>
+					<option value="5">DIVISION II</option>
+					<option value="10">DIVISION III</option>
+					<option value="15">DIVISION IV</option>
+				</select>
+			</td>
+			
+			<td>Max rank in best Rocket League gamemode</td>
+			<td class="s_tier">S</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>Rocket League Secondary Gamemode</h4></td>
+			<td>
+				<select name="rl_secondary_rank" id="rl_secondary_rank">
+					<option value="0" selected>UNRANKED</option>
+					<option value="40">BRONZE I</option>
+					<option value="60">BRONZE II</option>
+					<option value="80">BRONZE III</option>
+					<option value="100">SILVER I</option>
+					<option value="120">SILVER II</option>
+					<option value="140">SILVER III</option>
+					<option value="160">GOLD I</option>
+					<option value="180">GOLD II</option>
+					<option value="200">GOLD III</option>
+					<option value="220">PLATINUM I</option>
+					<option value="240">PLATINUM II</option>
+					<option value="260">PLATINUM III</option>
+					<option value="280">DIAMOND I</option>
+					<option value="300">DIAMOND II</option>
+					<option value="320">DIAMOND III</option>
+					<option value="340">CHAMPION I</option>
+					<option value="360">CHAMPION II</option>
+					<option value="380">CHAMPION III</option>
+					<option value="400">GRAND CHAMPION I</option>
+					<option value="420">GRAND CHAMPION II</option>
+					<option value="440">GRAND CHAMPION III</option>
+					<option value="460">SUPERSONIC LEGEND</option>
+				</select>
+			</td>
+			
+			<td>
+				<select name="rl_secondary_division" id="rl_secondary_division">
+					<option value="0" selected>DIVISION I</option>
+					<option value="5">DIVISION II</option>
+					<option value="10">DIVISION III</option>
+					<option value="15">DIVISION IV</option>
+				</select>
+			</td>
+			
+			<td>Max rank in 2nd best Rocket League gamemode</td>
+			<td class="d_tier">D</td>
+		</tr>
+
+
+
+
+
+		<tr>
+			<td><h4>Starcraft 2 Primary Race</h4></td>
+			<td>
+				<label for="sc2_primary_rank">ENTER ELO:</label>
+				<input type="number" name="sc2_primary_rank" id="sc2_primary_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max ELO for primary race</td>
+			<td class="s_tier">S</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>Starcraft 2 Secondary Race</h4></td>
+			<td>
+				<label for="sc2_secondary_rank">ENTER ELO:</label>
+				<input type="number" name="sc2_secondary_rank" id="sc2_secondary_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max ELO for secondary race</td>
+			<td class="d_tier">D</td>
+		</tr>
+
+
+
+
+		<tr>
+			<td><h4>Rainbow Six Siege</h4></td>
+			<td>
+				<label for="r6_rank">ENTER ELO:</label>
+				<input type="number" name="r6_rank" id="r6_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max ELO</td>
+			<td class="s_tier">S</td>
+		</tr>
+
+
+
+
+		<tr>
+			<td><h4>Legends of Runeterra</h4></td>
+			<td>
+				<select name="lor_soloduo_rank" id="lor_soloduo_rank">
+					<option value="0" selected>UNRANKED</option>
+					<option value="25">IRON IV</option>
+					<option value="40">IRON III</option>
+					<option value="55">IRON II</option>
+					<option value="70">IRON I</option>
+					<option value="85">BRONZE IV</option>
+					<option value="100">BRONZE III</option>
+					<option value="115">BRONZE II</option>
+					<option value="130">BRONZE I</option>
+					<option value="145">SILVER IV</option>
+					<option value="160">SILVER III</option>
+					<option value="175">SILVER II</option>
+					<option value="190">SILVER I</option>
+					<option value="205">GOLD IV</option>
+					<option value="220">GOLD III</option>
+					<option value="235">GOLD II</option>
+					<option value="250">GOLD I</option>
+					<option value="265">PLATINUM IV</option>
+					<option value="280">PLATINUM III</option>
+					<option value="295">PLATINUM II</option>
+					<option value="310">PLATINUM I</option>
+					<option value="325">DIAMOND IV</option>
+					<option value="340">DIAMOND III</option>
+					<option value="355">DIAMOND II</option>
+					<option value="370">DIAMOND I</option>
+					<option value="400">MASTER</option>
+				</select>
+			</td>
+			<td>
+				<label for="lor_soloduo_lp">ENTER LP:</label>
+				<input name="lor_soloduo_lp" id="lor_soloduo_lp" type="number" min="0" max="100" value="0">
+			</td>
+			<td>Max rank and LP combination</td>
+			<td class="a_tier">A</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>Apex Legends</h4></td>
+			<td>
+				<label for="apex_rank">ENTER RP:</label>
+				<input type="number" name="apex_rank" id="apex_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max RP</td>
+			<td class="a_tier">S</td>
+		</tr>
+
+
+
+	</table>
+
+
+	<button id="view_rank" onclick="view_rank()">VIEW RANK</button>
+
+</body>
+
+</html>
