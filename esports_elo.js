@@ -1,9 +1,9 @@
 
-const LOL_LP_MULT = .13;
-const OW_MULT = .102;
-const DOTA_MULT = .11;
-const SC2_MULT = .088;
-const R6_MULT = .098;
+const LOL_LP_MULT = 0.13;
+const OW_MULT = 0.102;
+const DOTA_MULT = 0.11;
+const SC2_MULT = 0.088;
+const R6_MULT = 0.098;
 const APEX_MULT = 0.072;
 const CHESS_MULT = 0.18;
 const HIVE_MULT = 0.45;
@@ -11,6 +11,8 @@ const CLASH_ROYALE_MULT = 0.055;
 const FACEIT_MULT = 0.22;
 const SMASH_MULT = 0.000042;
 const SPLITGATE_MULT = 0.088;
+const BRAWLHALLA_MULT = 0.287;
+const BRAWLHALLA_OFFSET = -700;
 
 
 const RANK_DIST = [
@@ -180,6 +182,23 @@ function get_splitgate_rank()
     return {"name":"Splitgate", "value":value, "tier":4};
 }
 
+function get_brawlhalla_rank()
+{
+    let value = (document.getElementById("brawlhalla_rank").value + BRAWLHALLA_OFFSET) * BRAWLHALLA_MULT;
+    if (value < 0)
+    {
+        value = 0;
+    }
+    return {"name":"Brawlhalla", "value":value, "tier":3};
+}
+
+function get_paladins_rank()
+{
+    let value = parseInt(document.getElementById("paladins_rank").value);
+    value += parseInt(document.getElementById("paladins_division").value);
+    return {"name":"Paladins", "value":value, "tier":3};
+}
+
 
 
 
@@ -253,6 +272,8 @@ function get_all_ranks()
     list.push(get_faceit_rank());
     list.push(get_smash_rank());
     list.push(get_splitgate_rank());
+    list.push(get_brawlhalla_rank());
+    list.push(get_paladins_rank());
 
 
 
