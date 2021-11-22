@@ -18,11 +18,23 @@
 	</div>
 
 
+	<div id="rank_number">
+
+	</div>
+
+
 
 
 	<table id="results">
 
 	</table>
+
+
+
+
+
+
+	<button id="view_rank" onclick="view_rank()">VIEW RANK</button>
 
 
 
@@ -74,7 +86,7 @@
 			</td>
 			<td>
 				<label for="lol_soloduo_lp">ENTER LP:</label>
-				<input name="lol_soloduo_lp" id="lol_soloduo_lp" type="number" min="0" max="100" value="0">
+				<input name="lol_soloduo_lp" id="lol_soloduo_lp" type="number" min="0" value="0">
 			</td>
 			<td>Max rank and LP combination for soloduo</td>
 			<td class="s_tier">S</td>
@@ -118,7 +130,7 @@
 			</td>
 			<td>
 				<label for="lol_flex_lp">ENTER LP:</label>
-				<input name="lol_flex_lp" id="lol_flex_lp" type="number" min="0" max="100" value="0">
+				<input name="lol_flex_lp" id="lol_flex_lp" type="number" min="0" value="0">
 			</td>
 			<td>Max rank and LP combination for ranked flex</td>
 			<td class="d_tier">D</td>
@@ -397,7 +409,7 @@
 		<tr>
 			<td><h4>Legends of Runeterra</h4></td>
 			<td>
-				<select name="lor_soloduo_rank" id="lor_soloduo_rank">
+				<select name="lor_rank" id="lor_rank">
 					<option value="0" selected>UNRANKED</option>
 					<option value="25">IRON IV</option>
 					<option value="40">IRON III</option>
@@ -427,8 +439,8 @@
 				</select>
 			</td>
 			<td>
-				<label for="lor_soloduo_lp">ENTER LP:</label>
-				<input name="lor_soloduo_lp" id="lor_soloduo_lp" type="number" min="0" max="100" value="0">
+				<label for="lor_lp">ENTER LP:</label>
+				<input name="lor_lp" id="lor_lp" type="number" min="0" value="0">
 			</td>
 			<td>Max rank and LP combination</td>
 			<td class="a_tier">A</td>
@@ -464,7 +476,7 @@
 			<td>
 			</td>
 			
-			<td>Max ELO at any time mode with at least 15 games played</td>
+			<td>Max Chess.com or FIDE ELO with at least 15 games played in that time mode</td>
 			<td class="a_tier">A</td>
 		</tr>
 
@@ -525,12 +537,107 @@
 		</tr>
 
 
-		
+
+
+		<tr>
+			<td><h4>Smite</h4></td>
+			<td>
+				<select name="smite_rank" id="smite_rank">
+					<option value="0" selected>UNRANKED</option>
+					<option value="20">BRONZE</option>
+					<option value="100">SILVER</option>
+					<option value="180">GOLD</option>
+					<option value="260">PLATINUM</option>
+					<option value="340">DIAMOND</option>
+					<option value="420">MASTER</option>
+				</select>
+			</td>
+			
+			<td>
+				<label for="smite_division">DIVISION:</label>
+				<select name="smite_division" id="smite_division">
+					<option value="0" selected>5</option>
+					<option value="16">4</option>
+					<option value="32">3</option>
+					<option value="48">2</option>
+					<option value="64">1</option>
+				</select>
+			</td>
+			
+			<td>Max rank and division in Smite</td>
+			<td class="a_tier">A</td>
+		</tr>
+
+
+
+
+		<tr>
+			<td><h4>Clash Royale</h4></td>
+			<td>
+				<label for="clash_royale_rank">ENTER TROPHIES:</label>
+				<input type="number" name="clash_royale_rank" id="clash_royale_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max trophy count in Clash Royale</td>
+			<td class="d_tier">D</td>
+		</tr>
+
+
+
+
+		<tr>
+			<td><h4>CSGO Faceit</h4></td>
+			<td>
+				<label for="faceit_rank">ENTER FACEIT ELO:</label>
+				<input type="number" name="faceit_rank" id="faceit_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max ELO on Faceit for CSGO</td>
+			<td class="d_tier">D</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>Smash Ultimate</h4></td>
+			<td>
+				<label for="smash_rank">ENTER GSP:</label>
+				<input type="number" name="smash_rank" id="smash_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max Global Smash Power in Smash Ultimate</td>
+			<td class="b_tier">B</td>
+		</tr>
+
+
+
+		<tr>
+			<td><h4>Splitgate</h4></td>
+			<td>
+				<label for="splitgate_rank">ENTER ELO:</label>
+				<input type="number" name="splitgate_rank" id="splitgate_rank" min="0" value="0">
+			</td>
+			
+			<td>
+			</td>
+			
+			<td>Max ELO in Splitgate</td>
+			<td class="c_tier">C</td>
+		</tr>
+
+
+
 
 	</table>
-
-
-	<button id="view_rank" onclick="view_rank()">VIEW RANK</button>
 
 </body>
 
