@@ -12,7 +12,7 @@ const FACEIT_MULT = 0.22;
 const SMASH_MULT = 0.000042;
 const SPLITGATE_MULT = 0.088;
 const BRAWLHALLA_MULT = 0.287;
-const BRAWLHALLA_OFFSET = -700;
+const BRAWLHALLA_OFFSET = 700;
 
 
 const RANK_DIST = [
@@ -184,7 +184,7 @@ function get_splitgate_rank()
 
 function get_brawlhalla_rank()
 {
-    let value = (document.getElementById("brawlhalla_rank").value + BRAWLHALLA_OFFSET) * BRAWLHALLA_MULT;
+    let value = (document.getElementById("brawlhalla_rank").value - BRAWLHALLA_OFFSET) * BRAWLHALLA_MULT;
     if (value < 0)
     {
         value = 0;
@@ -274,7 +274,6 @@ function get_all_ranks()
     list.push(get_splitgate_rank());
     list.push(get_brawlhalla_rank());
     list.push(get_paladins_rank());
-
 
 
     list = sort_list(list);
