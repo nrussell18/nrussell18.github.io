@@ -6,11 +6,39 @@ const SC2_MULT = .088;
 const R6_MULT = .098;
 const APEX_MULT = 0.072;
 const CHESS_MULT = 0.18;
-const HIVE_MULT = 0.52;
+const HIVE_MULT = 0.45;
 const CLASH_ROYALE_MULT = 0.055;
 const FACEIT_MULT = 0.22;
 const SMASH_MULT = 0.000042;
 const SPLITGATE_MULT = 0.088;
+
+
+const RANK_DIST = [
+    {"name":"GRANDMASTER III", "value":2400, "color":"#E62A34", "icon":"grandmaster_3.fw.png"},
+    {"name":"GRANDMASTER II", "value":2000, "color":"#E62A34", "icon":"grandmaster_2.fw.png"},
+    {"name":"GRANDMASTER I", "value":1800, "color":"#E62A34", "icon":"grandmaster_1.fw.png"},
+    {"name":"MASTER III", "value":1700, "color":"#B973FF", "icon":"master_3.fw.png"},
+    {"name":"MASTER II", "value":1600, "color":"#B973FF", "icon":"master_2.fw.png"},
+    {"name":"MASTER I", "value":1500, "color":"#B973FF", "icon":"master_1.fw.png"},
+    {"name":"DIAMOND III", "value":1450, "color":"#22CBD6", "icon":"diamond_3.fw.png"},
+    {"name":"DIAMOND II", "value":1400, "color":"#22CBD6", "icon":"diamond_2.fw.png"},
+    {"name":"DIAMOND I", "value":1350, "color":"#22CBD6", "icon":"diamond_1.fw.png"},
+    {"name":"PLATINUM III", "value":1300, "color":"#888888", "icon":"plat_3.fw.png"},
+    {"name":"PLATINUM II", "value":1250, "color":"#888888", "icon":"plat_2.fw.png"},
+    {"name":"PLATINUM I", "value":1200, "color":"#888888", "icon":"plat_1.fw.png"},
+    {"name":"GOLD III", "value":1150, "color":"#FFD24D", "icon":"gold_3.fw.png"},
+    {"name":"GOLD II", "value":1100, "color":"#FFD24D", "icon":"gold_2.fw.png"},
+    {"name":"GOLD I", "value":1050, "color":"#FFD24D", "icon":"gold_1.fw.png"},
+    {"name":"SILVER III", "value":1000, "color":"#DDDDDD", "icon":"silver_3.fw.png"},
+    {"name":"SILVER II", "value":950, "color":"#DDDDDD", "icon":"silver_2.fw.png"},
+    {"name":"SILVER I", "value":900, "color":"#DDDDDD", "icon":"silver_1.fw.png"},
+    {"name":"BRONZE III", "value":800, "color":"#834B00", "icon":"bronze_3.fw.png"},
+    {"name":"BRONZE II", "value":700, "color":"#834B00", "icon":"bronze_2.fw.png"},
+    {"name":"BRONZE I", "value":600, "color":"#834B00", "icon":"bronze_1.fw.png"},
+    {"name":"COPPER III", "value":500, "color":"#D2691E", "icon":"copper_3.fw.png"},
+    {"name":"COPPER II", "value":300, "color":"#D2691E", "icon":"copper_2.fw.png"},
+    {"name":"COPPER I", "value":0, "color":"#D2691E", "icon":"copper_1.fw.png"}
+];
 
 
 function get_lol_soloduo_rank()
@@ -136,7 +164,7 @@ function get_clash_royale_rank()
 
 function get_faceit_rank()
 {
-    let value = document.getElementById("clash_royale_rank").value * FACEIT_MULT;
+    let value = document.getElementById("faceit_rank").value * FACEIT_MULT;
     return {"name":"CSGO Faceit", "value":value, "tier":5};
 }
 
@@ -274,6 +302,7 @@ function view_rank()
     let list = get_all_ranks();
     list = get_result_list(list);
     let number_div = document.getElementById("rank_number");
+    let icon_div = document.getElementById("rank_icon");
     let results_table = document.getElementById("results");
     let grand_total = 0;
 
@@ -293,7 +322,36 @@ function view_rank()
         string_builder += "</tr>";
     }
 
-    number_div.innerHTML = "<h2>" + grand_total + "</h2>";
+    number_div.innerHTML = "<h1 id=\"final_number\">" + grand_total + "</h1>";
     results_table.innerHTML = string_builder;
+
+
+
+    let final_number = document.getElementById("final_number");
+    let found_rank = false;
+
+    let index = 0;
+    while (!found_rank)
+    {
+        if (RANK_DIST[index].value <= grand_total)
+        {
+            found_rank = true;
+        }
+        else
+        {
+            index++;
+        }
+    }
+    let rank = RANK_DIST[index];
+
+
+    final_number.style.color = rank.color;
+    number_div.innerHTML += "<h3 id=\"text_rank\">" + rank.name + "</h3>";
+    let text_rank = document.getElementById("text_rank");
+    text_rank.style.color = rank.color;
+    icon_div.innerHTML = "<img src=\"rank_icons\\" + rank.icon + "\" alt=\"icon\" id=\"icon_img\">";
+
+
+
 }
 

@@ -1,0 +1,109 @@
+
+
+body
+{
+    background-color: #1D1D1D;
+    color: white;
+    font-family: 'Porter', sans-serif;
+}
+
+
+#all_inputs_table, #results
+{
+    border: 0px solid black;
+    border-spacing: 4px;
+    padding: 4px;
+}
+
+#all_inputs_table td, #all_inputs_table th, #results td, #results th
+{
+    background-color: #2B2B2B;
+    padding: 10px;
+}
+
+
+select
+{
+    background-color: #111111;
+    color: white;
+    padding: 5px;
+    border: none;
+}
+
+select option
+{
+    background-color: #111111;
+    color: white;
+    padding: 5px;
+    border: none;
+}
+
+input
+{
+    background-color: #111111;
+    color: white;
+    padding: 5px;
+    border: none;
+}
+
+
+#view_rank
+{
+    background-color: #111111;
+    color: white;
+    padding: 20px;
+    border: none;
+    width: 100%;
+}
+
+#view_rank:hover
+{
+    background-color: #333333;
+    color: white;
+    padding: 20px;
+    border: none;
+}
+
+#rank_number, #rank_icon, #final_number
+{
+    text-align: center;
+}
+
+
+
+
+.s_tier
+{
+    background-color: #0C6DC7 !important;
+    text-align: center;
+}
+
+.a_tier
+{
+    background-color: #07D321 !important;
+    text-align: center;
+}
+
+.b_tier
+{
+    background-color: #92DF00 !important;
+    text-align: center;
+}
+
+.c_tier
+{
+    background-color: #DFC900 !important;
+    text-align: center;
+}
+
+.d_tier
+{
+    background-color: #D17E01 !important;
+    text-align: center;
+}
+
+.f_tier
+{
+    background-color: #D10101 !important;
+    text-align: center;
+}
