@@ -1,0 +1,63 @@
+body
+{
+    background-color: #0E0E0E;
+    color: white;
+    font-family: 'Porter', sans-serif;
+}
+
+h2
+{
+    color: #ebc334;
+}
+
+
+#results_table
+{
+    border: 0px solid black;
+    border-spacing: 5px;
+    padding: 5px;
+}
+
+#results_table th
+{
+    background-color: #2B2B2B;
+    padding: 10px;
+}
+
+#results_table td
+{
+    padding: 10px;
+}
+
+
+
+
+input
+{
+    background-color: #333333;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    width: 290px;
+    border: none;
+}
+
+
+
+button
+{
+    background-color: #333333;
+    color: white;
+    margin: 5px;
+    padding: 20px;
+    border: none;
+    width: 300px;
+}
+
+button:hover
+{
+    background-color: #484848;
+    color: white;
+    padding: 20px;
+    border: none;
+}

@@ -1,186 +1,106 @@
 
-//const fetch = require('node-fetch');
+//CONSTANTS
 
 const nat_puuid = "KUqrHjVFfvMZxUO7Ad4F2WE4q7HZ0MqwcxFZ-7Wqt_H0rwVNWDM35zHvM22JRgo9unoSlAoqi4sZjA";
 const api_key = "RGAPI-9f93e12d-7248-4ec1-be8f-9d09e18072b4";
 
 
-async function view_stats()
-{
-    let gameName = "Natereater";
-    let tagLine = "420";
-
-    let link = "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + gameName + "/" + tagLine + "?api_key=" + api_key;
-
-    let response = await fetch(link);
-    console.log(response);
-}
-
-
-function view_stats2()
-{
-    let gameName = "Natereater";
-    let tagLine = "420";
-
-    let request = new XMLHttpRequest();
-    request.open("GET", "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + gameName + "/" + tagLine);
-    request.send(null);
-
-    console.log(request.response);
-}
-
-
-
-function summoner()
-{
-
-    var req = new XMLHttpRequest();
-    req.open("GET", "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Natereater?api_key=" + api_key);
-    
-    req.addEventListener("load", function()
-    {
-        var res = JSON.parse(req.responseText);
-        console.log(res);
-    });
-    req.send(null);
-    
-}
-
-
-
-function runMe()
-{
-    let gameName = "Natereater";
-    let tagLine = "420";
-
-    let req = new XMLHttpRequest();
-    req.open("GET", "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + gameName + "/" + tagLine + "?api_key=" + api_key);
-    
-    req.addEventListener("load", function()
-    {
-        var res = JSON.parse(req.responseText);
-        console.log(res);
-    });
-    req.send(null);
-    
-}
-
-
-
-function val_match_from_puuid()
-{
-    let req = new XMLHttpRequest();
-    req.open("GET", "https://americas.api.riotgames.com/val/match/v1/matchlists/by-puuid/" + puuid + "?api_key=" + api_key);
-    
-    req.addEventListener("load", function()
-    {
-        var res = JSON.parse(req.responseText);
-        console.log(res);
-    });
-    req.send(null);
-    
-}
+const RANKS = [
+    {"name":"GRANDMASTER III", "value":1500, "color":"#E62A34", "icon":"grandmaster_3.fw.png"},
+    {"name":"GRANDMASTER II", "value":1200, "color":"#E62A34", "icon":"grandmaster_2.fw.png"},
+    {"name":"GRANDMASTER I", "value":900, "color":"#E62A34", "icon":"grandmaster_1.fw.png"},
+    {"name":"MASTER III", "value":800, "color":"#B973FF", "icon":"master_3.fw.png"},
+    {"name":"MASTER II", "value":750, "color":"#B973FF", "icon":"master_2.fw.png"},
+    {"name":"MASTER I", "value":700, "color":"#B973FF", "icon":"master_1.fw.png"},
+    {"name":"DIAMOND III", "value":660, "color":"#22CBD6", "icon":"diamond_3.fw.png"},
+    {"name":"DIAMOND II", "value":630, "color":"#22CBD6", "icon":"diamond_2.fw.png"},
+    {"name":"DIAMOND I", "value":600, "color":"#22CBD6", "icon":"diamond_1.fw.png"},
+    {"name":"PLATINUM III", "value":560, "color":"#1fc464", "icon":"plat_3.fw.png"},
+    {"name":"PLATINUM II", "value":530, "color":"#1fc464", "icon":"plat_2.fw.png"},
+    {"name":"PLATINUM I", "value":500, "color":"#1fc464", "icon":"plat_1.fw.png"},
+    {"name":"GOLD III", "value":460, "color":"#FFD24D", "icon":"gold_3.fw.png"},
+    {"name":"GOLD II", "value":430, "color":"#FFD24D", "icon":"gold_2.fw.png"},
+    {"name":"GOLD I", "value":400, "color":"#FFD24D", "icon":"gold_1.fw.png"},
+    {"name":"SILVER III", "value":360, "color":"#DDDDDD", "icon":"silver_3.fw.png"},
+    {"name":"SILVER II", "value":330, "color":"#DDDDDD", "icon":"silver_2.fw.png"},
+    {"name":"SILVER I", "value":300, "color":"#DDDDDD", "icon":"silver_1.fw.png"},
+    {"name":"BRONZE III", "value":260, "color":"#834B00", "icon":"bronze_3.fw.png"},
+    {"name":"BRONZE II", "value":230, "color":"#834B00", "icon":"bronze_2.fw.png"},
+    {"name":"BRONZE I", "value":200, "color":"#834B00", "icon":"bronze_1.fw.png"},
+    {"name":"COPPER III", "value":100, "color":"#D2691E", "icon":"copper_3.fw.png"},
+    {"name":"COPPER II", "value":50, "color":"#D2691E", "icon":"copper_2.fw.png"},
+    {"name":"COPPER I", "value":0, "color":"#D2691E", "icon":"copper_1.fw.png"}
+];
 
 
 
 
-function lol_match_from_puuid()
-{
-    let req = new XMLHttpRequest();
-    req.open("GET", "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?api_key=" + api_key);
-    
-    req.addEventListener("load", function()
-    {
-        var res = JSON.parse(req.responseText);
-        console.log(res);
-    });
-    req.send(null);
-    
-}
-
-
-
-function lol_match_by_id()
-{
-    let id = "NA1_4109900275";
-
-    let req = new XMLHttpRequest();
-    req.open("GET", "https://americas.api.riotgames.com/lol/match/v5/matches/" + id + "?api_key=" + api_key);
-    
-    req.addEventListener("load", function()
-    {
-        var res = JSON.parse(req.responseText);
-        console.log(res);
-    });
-    req.send(null);
-
-}
-
-
-
-
-
-
-// TEST REAL STUFF
-
-async function testeroo()
-{
-    let summoner = "5E SoCal";
-    let games = await get_games_from_summoner(summoner);
-    for (let i = 0; i < games.length; i++)
-    {
-        let player = get_player_stats(summoner, games[i]);
-        console.log(player.championName);
-        console.log(games[i].info.gameMode);
-        console.log(games[i].info.gameType);
-        console.log(player.totalDamageDealtToChampions / (games[i].info.gameDuration / 60) );
-        console.log(player.visionScore);
-        console.log(player.goldEarned / (games[i].info.gameDuration / 60));
-        console.log(player.totalMinionsKilled / (games[i].info.gameDuration / 60));
-        console.log(get_score(player, games[i]));
-    }
-}
-
-
-
-
-// REAL STUFF
-
-
-
-// FIELDS:
-/*
-
-- Champion
-- Score
-- Icon
-- Win/Loss
-- KDA
-- Date
-
-*/
+// Main function that calls all of the others and constructs the table
 async function fillTable()
 {
     let results_table = document.getElementById("results_table");
-    let string_builder = "<tr><th>Champion</th><th>Score</th><th>Icon</th><th>Result</th><th>KDA</th><th>Date</th></tr>";
+    let string_builder = "<tr><th>Champion</th><th>Score</th><th>Icon</th><th>Result</th>" +
+    "<th>KDA</th><th>DPM</th><th>CS</th><th>Duration</th><th>Date</th></tr>";
     let summoner = document.getElementById("username_box").value;
     let games = await get_games_from_summoner(summoner);
+    let ranks = [];
 
-    for (let i = 0; i < games.length; i++)
+
+    for (let i = 0; i < ((games.length < 10) ? games.length : 10); i++)
     {
         let player = get_player_stats(summoner, games[i]);
         let score = get_score(player, games[i]);
+        
+        let found_rank = false;
 
-        string_builder += "<tr>";
+        let index = 0;
+        while (!found_rank)
+        {
+            if (RANKS[index].value <= score)
+            {
+                found_rank = true;
+                break;
+            }
+            else
+            {
+                index++;
+            }
+        }
+        let rank = RANKS[index];
+        ranks.push(rank);
+
+
+        string_builder += "<tr id=\"table_row_" + i + "\">";
 
         string_builder += "<td>" + player.championName + "</td>";
         string_builder += "<td>" + score + "</td>";
-        string_builder += "<td>" + "x" + "</td>";
+
+        // Handle icon
+        string_builder += "<td><img src=\"rank_icons/" + rank.icon + "\" alt=\"icon\" width=\"100\" height=\"100\"></td>";
+
         string_builder += "<td>" + ((player.win) ? "WIN" : "LOSS") + "</td>";
         string_builder += "<td>" + player.kills + "/" + player.deaths + "/" + player.assists + "</td>";
-        string_builder += "<td>" + "x" + "</td>";
+        string_builder += "<td>" + Math.round(player.totalDamageDealtToChampions / (games[i].info.gameDuration / 60)) + "</td>";
+        string_builder += "<td>" + player.totalMinionsKilled + "</td>";
+        string_builder += "<td>" + Math.floor(games[i].info.gameDuration / 60) + ":" + (games[i].info.gameDuration % 60)  + "</td>";
+
+        // handle date
+        let date = new Date(0);
+        date.setUTCMilliseconds(games[i].info.gameEndTimestamp);
+        string_builder += "<td>" + date.toString().substring(0,21) + "</td>";
 
         string_builder += "</tr>";
+    }
+
+    results_table.innerHTML = string_builder;
+
+    for (let i = 0; i < ((games.length < 10) ? games.length : 10); i++)
+    {
+        let table_row = document.getElementById("table_row_" + i);
+        //table_row.style.backgroundColor = "#1D1D1D";
+        //table_row.style.color = ranks[i].color;
+        table_row.style.color = "#000000";
+        table_row.style.backgroundColor = ranks[i].color;
     }
 
 }
@@ -292,7 +212,7 @@ const DEATH_POINTS = -25;
 const GPM_MULT = 0.2;
 const VISION_SCORE_MULT = 1.5;
 const CSPM_MULT = 7;
-const DPM_MULT = 0.1;
+const DPM_MULT = 0.12;
 
 // bonus consts
 const DOUBLE_KILL_BONUS = 4;
@@ -338,6 +258,10 @@ function get_score(participant, game)
     score += participant.turretTakedowns * TURRET_TAKEDOWN;
 
     if (score < 0)
+    {
+        score = 0;
+    }
+    if (isNaN(score))
     {
         score = 0;
     }
