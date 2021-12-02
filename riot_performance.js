@@ -1,8 +1,6 @@
 
 //CONSTANTS
-
-const nat_puuid = "KUqrHjVFfvMZxUO7Ad4F2WE4q7HZ0MqwcxFZ-7Wqt_H0rwVNWDM35zHvM22JRgo9unoSlAoqi4sZjA";
-const api_key = "RGAPI-9f93e12d-7248-4ec1-be8f-9d09e18072b4";
+const api_key = "RGAPI-12b04623-ec2d-4e0f-8f2f-b3b98eaa8e7f";
 
 
 const RANKS = [
