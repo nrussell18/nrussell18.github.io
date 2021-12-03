@@ -1,6 +1,6 @@
 
 //CONSTANTS
-const api_key = "RGAPI-12b04623-ec2d-4e0f-8f2f-b3b98eaa8e7f";
+const api_key = "RGAPI-42f6cf73-ef85-4eef-9e8e-3a49a6f69d5b";
 
 
 const RANKS = [
@@ -80,7 +80,9 @@ async function fillTable()
         string_builder += "<td>" + player.kills + "/" + player.deaths + "/" + player.assists + "</td>";
         string_builder += "<td>" + Math.round(player.totalDamageDealtToChampions / (games[i].info.gameDuration / 60)) + "</td>";
         string_builder += "<td>" + player.totalMinionsKilled + "</td>";
-        string_builder += "<td>" + Math.floor(games[i].info.gameDuration / 60) + ":" + (games[i].info.gameDuration % 60)  + "</td>";
+        string_builder += "<td>" + Math.floor(games[i].info.gameDuration / 60) + ":" +
+                            ((games[i].info.gameDuration % 60 < 10) ? "0" : "") + 
+                            (games[i].info.gameDuration % 60)  + "</td>";
 
         // handle date
         let date = new Date(0);
