@@ -1,6 +1,6 @@
 
 //CONSTANTS
-const api_key = "RGAPI-8be6d605-8c96-401f-8b4c-37e29ccdde99";
+const api_key = "RGAPI-88a1df1a-05c5-43e1-ae30-af768245c6f4";
 
 
 const RANKS = [
